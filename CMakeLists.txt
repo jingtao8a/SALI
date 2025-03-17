@@ -11,9 +11,9 @@ set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-O0 -Wall)
 
 include_directories(${TBB_INCLUDE_DIRS})
-include_directories(src/core)
+include_directories(${PROJECT_SOURCE_DIR}/src/core)
 
 
-add_executable(example_mt src/examples/example_multithread.cpp)
+add_executable(example_mt ${PROJECT_SOURCE_DIR}/src/examples/example_multithread.cpp)
 
-target_link_libraries(example_mt PUBLIC TBB::tbb OpenMP::OpenMP_CXX )
+target_link_libraries(example_mt PUBLIC OpenMP::OpenMP_CXX ${TBB_LIBRARIES})
